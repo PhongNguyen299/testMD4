@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create employee</title>
+</head>
+<body>
+<h1>Create employee</h1>
+<p>
+    <a href="/employees">Employee list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/employees/create}" th:object="${employee}" method="post">
+    <table>
+        <tr>
+            <td>name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>email:</td>
+            <td><input type="text" th:field="*{email}"/></td>
+        </tr>
+        <tr>
+            <td>phone:</td>
+            <td><input type="text" th:field="*{phone}"/></td>
+        </tr>
+        <tr>
+            <td>address:</td>
+            <td><input type="text" th:field="*{address}"/></td>
+        </tr>
+        <tr>
+            <td>birth:</td>
+            <td><input type="date" th:field="*{birth}"/></td>
+        </tr>
+        <tr>
+            <td>username:</td>
+            <td><input type="text" th:field="*{username}"/></td>
+        </tr>
+        <tr>
+            <td>password:</td>
+            <td><input type="text" th:field="*{password}"/></td>
+        </tr>
+        <tr>
+         <tr>
+            <label>Gender:</label>
+            <input type="radio" th:field="*{gender}" th:value="true" /> Male
+            <input type="radio" th:field="*{gender}" th:value="false" /> Female
+        </tr>
+        <tr>
+            <td>job:</td>
+            <td><input type="text" th:field="*{job}"/></td>
+        </tr>
+
+<!--        <tr>-->
+<!--            <td>role:</td>-->
+<!--            <td><input type="text" th:field="*{role}"/></td>-->
+<!--        </tr>-->
+
+        <tr>
+            <label>status:</label>
+            <input type="radio" th:field="*{isStatus}" th:value="true" /> Active
+            <input type="radio" th:field="*{isStatus}" th:value="false" /> InActive
+        </tr>
+
+        <tr>
+            <td>Role:</td>
+            <td>
+                <select th:field="*{role}">
+                    <option th:each="r : ${roles}" th:value="${r.id}" th:text="${r.role}"></option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create employee"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
